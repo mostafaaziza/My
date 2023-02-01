@@ -77,19 +77,6 @@ async def _human_time_duration(seconds):
 
 
 @Client.on_message(
-    command(["الاوامر", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
-)
-@check_blacklist()
-async def alive(c: Client, message: Message):
-    chat_id = message.chat.id
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
-    buttons = InlineKeyboardMarkup(
-
-
-
-@Client.on_message(
     command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 @check_blacklist()
@@ -99,6 +86,31 @@ async def alive(c: Client, message: Message):
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     buttons = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
+            ]
+        ]
+    )
+    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    await c.send_photo(
+        chat_id,
+        photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
+        caption=text,
+        reply_markup=buttons,
+    )
+
+
+
+
+@Client.on_message(
+    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+)
+@check_blacklist()
+async def start_(c: Client, message: Message):
+    user_id = message.from_user.id
+    await add_served_user(user_id)
+    await message.reply_text(
         f"""ههݪاެ حبيب {message.from_user.mention()} ❤️‍🔥\n
 اެناެ بَۅت بَمميࢪ࣪اެتَ متَعدَدةَ ݪتشغِيݪ اެݪاغاެنِي فَي اެݪمَجمَۅعاتَ 🥇.
 
@@ -116,12 +128,7 @@ async def alive(c: Client, message: Message):
                 ],
             ]
         ),
-        text = f"**- تابع الاوامر في الاسفل ↓ **"
-    await c.send_photo(
-        chat_id,
-        photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
-        caption=text,
-        reply_markup=buttons,
+        disable_web_page_preview=True,
     )
 
 
