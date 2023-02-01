@@ -92,7 +92,7 @@ async def start_(c: Client, message: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
+                    InlineKeyboardButton("🥇 اެضفني اެݪى مجمۅعتَك 🥇", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
                     InlineKeyboardButton("طࢪيقة اެݪتشغيݪ", callback_data="user_guide")
                 ],[
@@ -104,31 +104,51 @@ async def start_(c: Client, message: Message):
         disable_web_page_preview=True,
     )
 
-
-
-@Client.on_message(command(["السورس", f"سورس", f"ياسورس", f"المطور"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["مبرمج السورس", f"ؤمن", f"ورس", f"السورس"]) & filters.group & ~filters.edited)
 async def start(client: Client, message: Message):
     await message.reply_photo(
-        photo=f"https://telegra.ph/file/19d68d531fd2f6f96e368.jpg",
-        caption=f"""⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌\nꔹ━━━━━ꔹ\n ⋆ المبرمج⤌[❥ᵛ͢ⁱᵖ┊⁽ Mostafa alazizy ₎“ٰۦ](https://t.me/php_7) 𖡼\nꔹ━━━━━ꔹ\n ⋆ قناة السورس ⤌[❥┊⁽ 𝐬𝐨𝐮𝐫𝐜𝐞 𝐚𝐥𝐚𝐳𝐢𝐳a²¹ ₎“ٰۦ](https://t.me/BANDA1M) 𖡼""",
+        photo=f"https://telegra.ph/file/8efbe93b81985bb648d95.jpg",
+        caption=f"""Programmer [EITHON](https://t.me/EITHON1) 𖡼\nᴛᴏ ᴄᴏᴍᴍụɴɪᴄᴀᴛᴇ ᴛᴏɢᴇᴛʜᴇʀ 𖡼\nғᴏʟʟᴏᴡ ᴛʜᴇ ʙụᴛᴛᴏɴѕ ʟᴏᴡᴇʀ 𖡼""",
         reply_markup=InlineKeyboardMarkup(
          [
             [
-                InlineKeyboardButton("المبرمج مصطفي العزايزي", url=f"https://t.me/php_7"),
+                InlineKeyboardButton("℡ ᯓ Ξ𝗜𝗧𝗛𝗢𝗡™ ايثون", url=f"https://t.me/EITHON1"),
             ],
             [
                 InlineKeyboardButton(
-                    "قناة اليوتيوب", url=f"https://www.youtube.com/@ull"
+                    "-محمد .", url=f"https://t.me/M_Z_Z_N"
                 ),
             ],
             [
-                InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true"),
+                InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
             ]
          ]
      )
   )
 
-
+@Client.on_message(
+    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+)
+@check_blacklist()
+async def alive(c: Client, message: Message):
+    chat_id = message.chat.id
+    current_time = datetime.utcnow()
+    uptime_sec = (current_time - START_TIME).total_seconds()
+    uptime = await _human_time_duration(int(uptime_sec))
+    buttons = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
+            ]
+        ]
+    )
+    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    await c.send_photo(
+        chat_id,
+        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
+        caption=text,
+        reply_markup=buttons,
+    )
 
 @Client.on_message(
     command(["الاوامر", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
@@ -149,7 +169,7 @@ async def alive(c: Client, message: Message):
     text = f"**- تابع الاوامر في الاسفل ↓ **"
     await c.send_photo(
         chat_id,
-        photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
+        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
         caption=text,
         reply_markup=buttons,
     )
