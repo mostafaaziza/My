@@ -79,83 +79,38 @@ async def _human_time_duration(seconds):
 @Client.on_message(
     command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
-    @check_blacklist()
-async def alive(c: Client, message: Message):
-    chat_id = message.chat.id
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
-    buttons = InlineKeyboardMarkup(
-        f"""ههݪاެ حبيب {message.from_user.mention()} ❤️‍🔥\n
-اެناެ بَۅت بَمميࢪ࣪اެتَ متَعدَدةَ ݪتشغِيݪ اެݪاغاެنِي فَي اެݪمَجمَۅعاتَ 🥇.
-
--› MᥲᎥꪀƚᥲᎥꪀᥱძ ხy -› [S᥆ᥙrᥴᥱ Frᥱᥱძ᥆ꪔ](http://t.me/xl444)
+@check_blacklist()
+async def start_(c: Client, message: Message):
+    user_id = message.from_user.id
+    await add_served_user(user_id)
+    await message.reply_text(
+        f"""
+⋆ مرحبا يروحي⤌⤈
+ {message.from_user.mention()} 
+ꔹ━━━━━ꔹ
+⋆ في بوت تشغيل الاغاني في المكالمات الصوتية  •
+ꔹ━━━━━ꔹ
+⋆ لمعرفة اوامر هذا البوت اضغط على ⤌ اوامر التشغيل  •
+ꔹ━━━━━ꔹ
+⋆ لمعرفة طريقة تفعيل هذا البوت اضغط على ⤌ طريقة التفعيل •
+ꔹ━━━━━ꔹ
+⋆ لمساعدتك تواصل مع المطور •
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🥇 اެضفني اެݪى مجمۅعتَك 🥇", url=f"https://t.me/{me_bot.username}?startgroup=true")
+                    InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
-                    InlineKeyboardButton("طࢪيقة اެݪتشغيݪ", callback_data="user_guide")
+                   InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
                 ],[
-                    InlineKeyboardButton("اެݪاۅاެمࢪ", callback_data="command_list"),
-                    InlineKeyboardButton("🦎 اެݪمطَۅࢪ", url=f"https://t.me/{OWNER_USERNAME}")                    
+                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                    InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
                 ],
             ]
         ),
-        text = f"**- تابع الاوامر في الاسفل ↓ **"
-    await c.send_photo(
-        chat_id,
-        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
-        caption=text,
-        reply_markup=buttons,
+        disable_web_page_preview=True,
     )
 
-@Client.on_message(command(["مبرمج السورس", f"ؤمن", f"ورس", f"السورس"]) & filters.group & ~filters.edited)
-async def start(client: Client, message: Message):
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/8efbe93b81985bb648d95.jpg",
-        caption=f"""Programmer [EITHON](https://t.me/EITHON1) 𖡼\nᴛᴏ ᴄᴏᴍᴍụɴɪᴄᴀᴛᴇ ᴛᴏɢᴇᴛʜᴇʀ 𖡼\nғᴏʟʟᴏᴡ ᴛʜᴇ ʙụᴛᴛᴏɴѕ ʟᴏᴡᴇʀ 𖡼""",
-        reply_markup=InlineKeyboardMarkup(
-         [
-            [
-                InlineKeyboardButton("℡ ᯓ Ξ𝗜𝗧𝗛𝗢𝗡™ ايثون", url=f"https://t.me/EITHON1"),
-            ],
-            [
-                InlineKeyboardButton(
-                    "-محمد .", url=f"https://t.me/M_Z_Z_N"
-                ),
-            ],
-            [
-                InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
-            ]
-         ]
-     )
-  )
-
-@Client.on_message(
-    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
-)
-@check_blacklist()
-async def alive(c: Client, message: Message):
-    chat_id = message.chat.id
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
-    buttons = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
-            ]
-        ]
-    )
-    text = f"**- تابع الاوامر في الاسفل ↓ **"
-    await c.send_photo(
-        chat_id,
-        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
-        caption=text,
-        reply_markup=buttons,
-    )
 
 @Client.on_message(
     command(["الاوامر", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
@@ -176,7 +131,7 @@ async def alive(c: Client, message: Message):
     text = f"**- تابع الاوامر في الاسفل ↓ **"
     await c.send_photo(
         chat_id,
-        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
+        photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
         caption=text,
         reply_markup=buttons,
     )
