@@ -104,6 +104,27 @@ async def start_(c: Client, message: Message):
         disable_web_page_preview=True,
     )
 
+@Client.on_message(command(["مبرمج السورس", f"ؤمن", f"ورس", f"السورس"]) & filters.group & ~filters.edited)
+async def start(client: Client, message: Message):
+    await message.reply_photo(
+        photo=f"https://telegra.ph/file/8efbe93b81985bb648d95.jpg",
+        caption=f"""Programmer [EITHON](https://t.me/EITHON1) 𖡼\nᴛᴏ ᴄᴏᴍᴍụɴɪᴄᴀᴛᴇ ᴛᴏɢᴇᴛʜᴇʀ 𖡼\nғᴏʟʟᴏᴡ ᴛʜᴇ ʙụᴛᴛᴏɴѕ ʟᴏᴡᴇʀ 𖡼""",
+        reply_markup=InlineKeyboardMarkup(
+         [
+            [
+                InlineKeyboardButton("℡ ᯓ Ξ𝗜𝗧𝗛𝗢𝗡™ ايثون", url=f"https://t.me/EITHON1"),
+            ],
+            [
+                InlineKeyboardButton(
+                    "-محمد .", url=f"https://t.me/M_Z_Z_N"
+                ),
+            ],
+            [
+                InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"),
+            ]
+         ]
+     )
+  )
 
 @Client.on_message(
     command(["الاوامر", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
