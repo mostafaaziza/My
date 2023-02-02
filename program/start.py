@@ -129,7 +129,7 @@ async def alive(c: Client, message: Message):
     buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("⋆ اوامر التشغيل • ", callback_data="user_command"),
+                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
             ]
         ]
     )
@@ -196,10 +196,10 @@ async def new_chat(c: Client, m: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("⋆ قناة السورس •", url=f"https://t.me/banda1m"),
-                                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list")
+                                InlineKeyboardButton("-› قناة السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                                InlineKeyboardButton("-› الاوامر", callback_data="command_list")
                             ],[
-                                InlineKeyboardButton("⋆ الحساب المساعد •", url=f"https://t.me/{me_user.username}")
+                                InlineKeyboardButton("-› حساب المساعد", url=f"https://t.me/{me_user.username}")
                             ]
                         ]
                     )
