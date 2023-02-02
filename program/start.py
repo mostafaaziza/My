@@ -107,7 +107,6 @@ async def start_(c: Client, message: Message):
                     InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
                    InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
-                   InlineKeyboardButton("⋆ قناة السورس •", url=f"https://t.me/BANDA1M")                    
                 ],[
                     InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
                     InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
