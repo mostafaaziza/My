@@ -107,6 +107,7 @@ async def start_(c: Client, message: Message):
                     InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
                    InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
+                   InlineKeyboardButton("⋆ قناة السورس •", url=f"https://t.me/BANDA1M")                    
                 ],[
                     InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
                     InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
@@ -129,11 +130,11 @@ async def alive(c: Client, message: Message):
     buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
+                InlineKeyboardButton("⋆ اوامر التشغيل • ", callback_data="user_command"),
             ]
         ]
     )
-    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    text = f"⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌\n⋆ تفضل اوامر البوت ⤌⤈"
     await c.send_photo(
         chat_id,
         photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
@@ -191,15 +192,15 @@ async def new_chat(c: Client, m: Message):
                     return await bot.leave_chat(chat_id)
             if member.id == me_bot.id:
                 return await m.reply(
-                    "🎗️ وأخيرا ضفتوني ، طبعاً شكراً للي ضافني !\n\n"                 
-                    "👍🏻 اضغط على زر الاوامر حتى تشوف شلون تشغلني ",
+"⋆ تم اضافة البوت اللمجموعه بنحاح •"                 
+"⋆ اليك لوحة تحكم البوت⤌⤈",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("-› قناة السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                                InlineKeyboardButton("-› الاوامر", callback_data="command_list")
+                                InlineKeyboardButton("⋆ قناة السورس •", url=f"https://t.me/banda1m"),
+                                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list")
                             ],[
-                                InlineKeyboardButton("-› حساب المساعد", url=f"https://t.me/{me_user.username}")
+                                InlineKeyboardButton("⋆ الحساب المساعد •", url=f"https://t.me/{me_user.username}")
                             ]
                         ]
                     )
