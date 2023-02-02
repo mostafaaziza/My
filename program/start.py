@@ -174,6 +174,42 @@ async def approve_join_chat(c: Client, m: ChatJoinRequest):
         await c.approve_chat_join_request(m.chat.id, m.from_user.id)
 
 
+@Client.on_message(filters.new_chat_members)
+async def new_chat(c: Client, m: Message):
+    chat_id = m.chat.id
+    if await is_served_chat(chat_id):
+        pass
+    else:
+        await add_served_chat(chat_id)
+    for member in m.new_chat_members:
+        try:
+            if member.id == me_bot.id:
+                if chat_id in await blacklisted_chats():
+                    await m.reply_text(
+                        "❗️ This chat has blacklisted by sudo user and You're not allowed to use me in this chat."
+                    )
+                    return await bot.leave_chat(chat_id)
+            if member.id == me_bot.id:
+                return await m.reply(
+                    "🎗️ وأخيرا ضفتوني ، طبعاً شكراً للي ضافني !\n\n"                 
+                    "👍🏻 اضغط على زر الاوامر حتى تشوف شلون تشغلني ",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("-› قناة السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                                InlineKeyboardButton("-› الاوامر", callback_data="command_list")
+                            ],[
+                                InlineKeyboardButton("-› حساب المساعد", url=f"https://t.me/{me_user.username}")
+                            ]
+                        ]
+                    )
+                )
+            return 
+        except Exception:
+            return
+
+
+chat_watcher_group = 5
 
 @Client.on_message(group=chat_watcher_group)
 async def chat_watcher_func(_, message: Message):
