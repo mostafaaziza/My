@@ -77,7 +77,7 @@ async def _human_time_duration(seconds):
 
 
 @Client.on_message(
-    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+    command(["الاوامر", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 @check_blacklist()
 async def start_(c: Client, message: Message):
@@ -119,7 +119,7 @@ async def start_(c: Client, message: Message):
 
 
 @Client.on_message(
-    command(["الاوامر", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+    command(["start", f"alive@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 @check_blacklist()
 async def alive(c: Client, message: Message):
@@ -134,10 +134,29 @@ async def alive(c: Client, message: Message):
             ]
         ]
     )
-    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    text = f"
+**
+⋆ مرحبا بك ياروحي ⤌⤈
+𓆩  {message.from_user.mention()} 𓆪
+ꔹ━━━━━ꔹ
+⋆ في بوت تشغيل الاغاني في المكالمات •
+[𓆩 قناة السورس 𓆪](t.me/BANDA1M)
+ꔹ━━━━━ꔹ
+⋆ لمعرفة اوامر البوت اضغط على ⤌⤈
+[ 𓆩 اوامر التشغيل 𓆪](https://www.youtube.com/@ull)
+ꔹ━━━━━ꔹ
+⋆ لمعرفة طريقة التفعيل اضغط علي ⤌⤈
+[𓆩 طريقة التفعيل 𓆪](https://www.youtube.com/@ull)
+ꔹ━━━━━ꔹ
+لصنع بوت مثل هذا البوت مجانا ⤌⤈
+[𓆩  اضغط هنا 𓆪](https://www.youtube.com/@ull)
+ꔹ━━━━━ꔹ
+⋆ لمساعدتك تواصل مع المطور •
+ **
+"
     await c.send_photo(
         chat_id,
-        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
+        photo=f"https://telegra.ph/file/19d68d531fd2f6f96e368.jpg",
         caption=text,
         reply_markup=buttons,
     )
