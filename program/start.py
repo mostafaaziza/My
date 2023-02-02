@@ -133,8 +133,7 @@ async def alive(c: Client, message: Message):
             ]
         ]
     )
-    text = f"⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌
-⋆ تفضل اوامر البوت ⤌⤈"
+    text = f"⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌\n⋆ تفضل اوامر البوت ⤌⤈"
     await c.send_photo(
         chat_id,
         photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
@@ -197,11 +196,10 @@ async def new_chat(c: Client, m: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list")
                 InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")                  
                             ],[
-                                InlineKeyboardButton("⋆ الحساب المساعد •", url=f"https://t.me/{me_user.username}")
-                                InlineKeyboardButton("⋆قناة السورس •", url=f"https://t.me/BANDA1M")
+                                InlineKeyboardButton("⋆ الحساب المساعد •", url=f"https://t.me/{me_user.username}")                               
                             ]
                         ]
                     )
