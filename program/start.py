@@ -85,7 +85,7 @@ async def start_(c: Client, message: Message):
     await add_served_user(user_id)
     await message.reply_text(
         f"""
-⋆ مرحبا يروحي⤌⤈
+⋆ مرحبا بك ياروحي ⤌⤈
  {message.from_user.mention()} 
 ꔹ━━━━━ꔹ
 ⋆ في بوت تشغيل الاغاني في المكالمات •
@@ -106,11 +106,12 @@ async def start_(c: Client, message: Message):
                 [
                     InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
-                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
-                    InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")                
-                ],[
-InlineKeyboardButton("مبرمج السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                InlineKeyboardButton("مبرمج السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
                    InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
+                ],[
+                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                    InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
+                    InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
                 ],               
             ]
         ),
@@ -134,7 +135,7 @@ async def alive(c: Client, message: Message):
             ]
         ]
     )
-    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    text = f"** ⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌\n⋆ تفضل اوامر البوت ⤌⤈ **"
     await c.send_photo(
         chat_id,
         photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
