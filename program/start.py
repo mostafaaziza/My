@@ -85,28 +85,31 @@ async def start_(c: Client, message: Message):
     await add_served_user(user_id)
     await message.reply_text(
         f"""
-⋆ مرحبا يروحي⤌⤈
+⋆ مرحبا بك ياروحي ⤌⤈
  {message.from_user.mention()} 
 ꔹ━━━━━ꔹ
-⋆ في بوت تشغيل الاغاني في المكالمات الصوتية  •
+⋆ في بوت تشغيل الاغاني في المكالمات •
 ꔹ━━━━━ꔹ
-⋆ لمعرفة اوامر هذا البوت اضغط على ⤌ اوامر التشغيل  •
+⋆ لمعرفة اوامر البوت اضغط على ⤌⤈
+ 𓆩 اوامر التشغيل 𓆪
 ꔹ━━━━━ꔹ
-⋆ لمعرفة طريقة تفعيل هذا البوت اضغط على ⤌ طريقة التفعيل •
+⋆ لمعرفة طريقة التفعيل اضغط علي ⤌⤈
+𓆩  طريقة التفعيل 𓆪
+ꔹ━━━━━ꔹ
+لصنع بوت مثل هذا البوت مجانا ⤌⤈
+[𓆩  اضغط هنا 𓆪](https://www.youtube.com/@ull)
 ꔹ━━━━━ꔹ
 ⋆ لمساعدتك تواصل مع المطور •
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
+                InlineKeyboardButton("⋆ اضف البوت الى مجموعتك •", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
-                InlineKeyboardButton("مبرمج السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                   InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
+                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")                  
                 ],[
-                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
-                    InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
-                    InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
+               InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
                 ],               
             ]
         ),
@@ -126,11 +129,12 @@ async def alive(c: Client, message: Message):
     buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
+                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="user_command"),
             ]
         ]
     )
-    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    text = f"⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌
+⋆ تفضل اوامر البوت ⤌⤈"
     await c.send_photo(
         chat_id,
         photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
@@ -188,15 +192,16 @@ async def new_chat(c: Client, m: Message):
                     return await bot.leave_chat(chat_id)
             if member.id == me_bot.id:
                 return await m.reply(
-                    "🎗️ وأخيرا ضفتوني ، طبعاً شكراً للي ضافني !\n\n"                 
-                    "👍🏻 اضغط على زر الاوامر حتى تشوف شلون تشغلني ",
+"⋆ تم اضافة البوت اللمجموعه بنحاح •"                 
+"⋆ اليك لوحة تحكم البوت⤌⤈",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("-› قناة السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                                InlineKeyboardButton("-› الاوامر", callback_data="command_list")
+                                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")                  
                             ],[
-                                InlineKeyboardButton("-› حساب المساعد", url=f"https://t.me/{me_user.username}")
+                                InlineKeyboardButton("⋆ الحساب المساعد •", url=f"https://t.me/{me_user.username}")
+                                InlineKeyboardButton("⋆قناة السورس •", url=f"https://t.me/BANDA1M")
                             ]
                         ]
                     )
