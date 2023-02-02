@@ -97,7 +97,7 @@ async def start_(c: Client, message: Message):
 𓆩  طريقة التفعيل 𓆪
 ꔹ━━━━━ꔹ
 لصنع بوت مثل هذا البوت مجانا ⤌⤈
-𓆩  اضغط هنا 𓆪
+[𓆩  اضغط هنا 𓆪](https://www.youtube.com/@ull)
 ꔹ━━━━━ꔹ
 ⋆ لمساعدتك تواصل مع المطور •
 """,
@@ -106,13 +106,11 @@ async def start_(c: Client, message: Message):
                 [
                     InlineKeyboardButton("♡اضف البوت الى مجموعتك♡", url=f"https://t.me/{me_bot.username}?startgroup=true")
                 ],[
-                InlineKeyboardButton("مبرمج السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
                    InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
                 ],[
                     InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
-                    InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
                     InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
-                ],               
+                ],
             ]
         ),
         disable_web_page_preview=True,
@@ -135,10 +133,10 @@ async def alive(c: Client, message: Message):
             ]
         ]
     )
-    text = f"** ⋆ ʷᵉˡᶜᵒᵐᵉ ᵗᵒ ᵗʰᵉ ᵃᶻᵃᶻʸ ˢᵒᵘʳᶜᵉ ⤈⤌\n⋆ تفضل اوامر البوت ⤌⤈ **"
+    text = f"**- تابع الاوامر في الاسفل ↓ **"
     await c.send_photo(
         chat_id,
-        photo=f"https://telegra.ph/file/e29699aa7b32a802c6d8e.jpg",
+        photo=f"https://te.legra.ph/file/402c519808f75bd9b1803.jpg",
         caption=text,
         reply_markup=buttons,
     )
