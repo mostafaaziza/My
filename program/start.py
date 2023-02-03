@@ -77,7 +77,7 @@ async def _human_time_duration(seconds):
 
 
 @Client.on_message(
-    command(["الاوامر", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+    command(["الاوامر", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
 @check_blacklist()
 async def start_(c: Client, message: Message):
