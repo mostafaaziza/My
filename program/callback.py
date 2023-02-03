@@ -41,7 +41,7 @@ async def start_set(_, query: CallbackQuery):
     await query.edit_message_text(
         """
 ⋆ مرحبا بك ياروحي ⤌⤈
-𓆩  {message.from_user.mention()} 𓆪
+𓆩  {query.message.chat.first_name} 𓆪
 ꔹ━━━━━ꔹ
 ⋆ في بوت تشغيل الاغاني في المكالمات •
 [𓆩 قناة السورس 𓆪](t.me/BANDA1M)
@@ -64,7 +64,7 @@ async def start_set(_, query: CallbackQuery):
                 ],[
                    InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
                 ],[
-                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="user_command"),
                     InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
                 ],
             ]

@@ -109,7 +109,7 @@ async def start_(c: Client, message: Message):
                 ],[
                    InlineKeyboardButton("⋆ مطور البوت •", url=f"https://t.me/{OWNER_USERNAME}")                    
                 ],[
-                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list"),
+                    InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="user_command"),
                     InlineKeyboardButton("⋆ طريقة التفعيل •", callback_data="user_guide")
                 ],
             ]
@@ -192,15 +192,15 @@ async def new_chat(c: Client, m: Message):
                     return await bot.leave_chat(chat_id)
             if member.id == me_bot.id:
                 return await m.reply(
-                    "🎗️ وأخيرا ضفتوني ، طبعاً شكراً للي ضافني !\n\n"                 
-                    "👍🏻 اضغط على زر الاوامر حتى تشوف شلون تشغلني ",
+                    "⋆ تم اضافة البوت بنجاح • \n\n"                 
+"⋆ اكتب كلمة .انضم لدعوه المساعد •",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("-› قناة السورس", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                                InlineKeyboardButton("-› الاوامر", callback_data="command_list")
+                                InlineKeyboardButton("⋆ قناة السورس •", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                                InlineKeyboardButton("⋆ اوامر التشغيل •", callback_data="command_list")
                             ],[
-                                InlineKeyboardButton("-› حساب المساعد", url=f"https://t.me/{me_user.username}")
+                                InlineKeyboardButton("⋆ الحساب المساعد •", url=f"https://t.me/{me_user.username}")
                             ]
                         ]
                     )
