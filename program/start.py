@@ -130,11 +130,11 @@ async def alive(c: Client, message: Message):
     buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🥇 اوامر البوت ", callback_data="user_command"),
+                InlineKeyboardButton("🥇 اوامر البوت 🥇", callback_data="home_start"),
             ]
         ]
     )
-    text = f"**- تابع الاوامر في الاسفل ↓ **"
+    text = f"** لصنع بوت مثل هذا البوت مجانا ⤌⤈\n[𓆩  اضغط هنا 𓆪](https://www.youtube.com/@ull) **"
     await c.send_photo(
         chat_id,
         photo=f"https://telegra.ph/file/19d68d531fd2f6f96e368.jpg",
