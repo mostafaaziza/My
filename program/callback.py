@@ -41,7 +41,6 @@ async def start_set(_, query: CallbackQuery):
     await query.edit_message_text(
         """
 ⋆ مرحبا بك ياروحي ⤌⤈
-𓆩 [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) 𓆪
 ꔹ━━━━━ꔹ
 ⋆ في بوت تشغيل الاغاني في المكالمات •
 [𓆩 قناة السورس 𓆪](t.me/BANDA1M)

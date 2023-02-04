@@ -56,9 +56,9 @@ async def join_chat(c: Client, m: Message):
             )
         await user.join_chat(invitelink)
         await remove_active_chat(chat_id)
-        return await user.send_message(chat_id, "✅ فرحان هوايه لان دزيتولي دعوة")
+        return await user.send_message(chat_id, "⋆ شكرا علي الاضافه يروحي •")
     except UserAlreadyParticipant:
-        return await user.send_message(chat_id, "✅ موجود يمعود")
+        return await user.send_message(chat_id, "⋆ انا موجود فجروب يروحي •")
 
 
 @Client.on_message(
@@ -72,12 +72,12 @@ async def leave_chat(c :Client, m: Message):
         if chat_id in QUEUE:
             await remove_active_chat(chat_id)
             await user.leave_chat(chat_id)
-            return await c.send_message(chat_id, "✅ هوه مو صوجك صوج القواد الي اجا يغنيلكم باي")
+            return await c.send_message(chat_id, "⋆ طب سلام انا •")
         else:
             await user.leave_chat(chat_id)
-            return await c.send_message(chat_id, "✅ وانيهم طالع وياه باي")
+            return await c.send_message(chat_id, "⋆ سلام نخارج مع بوت •")
     except UserNotParticipant:
-        return await c.send_message(chat_id, "🦴 غادر منزمان لتلح")
+        return await c.send_message(chat_id, "⋆ غادر من زمان متكترش •")
 
 
 @Client.on_message(command(["leaveall", f"leaveall@{BOT_USERNAME}"]) & ~filters.edited)
@@ -113,7 +113,7 @@ async def leave_all(c: Client, message: Message):
 @authorized_users_only
 async def start_group_call(c: Client, m: Message):
     chat_id = m.chat.id
-    msg = await c.send_message(chat_id, "`❤️‍🔥يَاެݪله ࢪاެح اެفَتح مَكَالمة...`")
+    msg = await c.send_message(chat_id, "`⋆ يلا انا هفتح كول •`")
     try:
         peer = await user.resolve_peer(chat_id)
         await user.send(
@@ -125,7 +125,7 @@ async def start_group_call(c: Client, m: Message):
                 random_id=user.rnd_id() // 9000000000,
             )
         )
-        await msg.edit_text("🦴 تَم فَتحت مَكَاެݪمَة صَعدۅ !")
+        await msg.edit_text("⋆ يلا انا فتحت الكول تعالو •")
     except ChatAdminRequired:
         await msg.edit_text(
             "كمشرف في المجموعة مع صلاحية لاستخدام هذه الامر ، عليك رفع حساب المساعد :\n\n-›  ❤️‍🔥 الدردشة الصوتية"
@@ -137,21 +137,21 @@ async def start_group_call(c: Client, m: Message):
 @authorized_users_only
 async def stop_group_call(c: Client, m: Message):
     chat_id = m.chat.id
-    msg = await c.send_message(chat_id, "`🦎 يَاެݪݪهَ ࢪاެحَ اެسِدَ المَكَاެݪمَةَ...`")
+    msg = await c.send_message(chat_id, "⋆ يلا خلاص كده هقفل الكول •`")
     try:
         if not (
             group_call := (
                 await get_calls(m, err_msg="group call not active")
             )
         ):
-            await msg.edit_text("🦎 سديتها منزمان")
+            await msg.edit_text("⋆ مقفوله اصلا •")
             return
         await user.send(
             DiscardGroupCall(
                 call=group_call
             )
         )
-        await msg.edit_text("🦴 تَم اެݪانِهاء اެبشࢪ ")
+        await msg.edit_text("⋆ تم قفل الكول بنجاح •")
     except Exception as e:
         if "GROUPCALL_FORBIDDEN" in str(e):
             await msg.edit_text(

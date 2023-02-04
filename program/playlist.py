@@ -32,7 +32,7 @@ from driver.filters import command, other_filters
 
 
 keyboard = InlineKeyboardMarkup(
-    [[InlineKeyboardButton("-› اެغِݪاެقِ", callback_data="set_close")]]
+    [[InlineKeyboardButton("⋆ اغلاق القائمه •", callback_data="set_close")]]
 )
 
 
@@ -59,4 +59,4 @@ async def playlist(client, m: Message):
                 QUE = QUE + "\n" + f"`#{x}` - [{han}]({hok}) | `{hap}`"
             await m.reply(QUE, reply_markup=keyboard, disable_web_page_preview=True)
     else:
-        await m.reply("🦴 **ماكو شي مشتغل شبيك؟**")
+        await m.reply("⋆ **مفيش حاجه شغاله اصلا **")

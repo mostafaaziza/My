@@ -104,13 +104,13 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             return await m.reply_text(f"🚫 error:\n\n» {e}")
     if not replied:
         return await m.reply(
-            "-› الرد على مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت ."
+            "⋆  الرد علي مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت.. •"
         )
     if replied.video or replied.document:
         if not link:
-            loser = await replied.reply("❤️‍🔥تَحمَيݪ اެݪمݪف...")
+            loser = await replied.reply("⋆  تحميل الملف.. •.")
         else:
-            loser = await m.reply("❤️‍🔥تَحمَيݪ اެݪمݪف...")
+            loser = await m.reply("⋆  تحميل الملف.. •.")
         dl = await replied.download()
         link = replied.link
         songname = "video"
@@ -135,7 +135,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             songname = "video"
 
         if chat_id in QUEUE:
-            await loser.edit("❤️‍🔥 تَتم اެݪاضافَة...")
+            await loser.edit("⋆ جاري الاضافة •.")
             gcname = m.chat.title
             ctitle = await CHAT_TITLE(gcname)
             title = songname
@@ -149,15 +149,15 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             await m.reply_photo(
                 photo=image,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"-› **اެبشࢪ عيني ضفتها ݪݪانتضاࢪ »** `{pos}`\n\n"
-                        f"-› **اެݪاسم:** [{songname}]({link}) | `الفيديو`\n"
-                        f"-› **اެݪمدةه:** `{duration}`\n"
-                        f"-› **طݪب اެݪحݪۅ:** {requester}",
+                caption=f"⋆ **⋆ تم اضافة الاغنيه للانتظار »** `{pos}`\n\n"
+                        f"⋆ **⋆ اسم الاغنيه:** [{songname}]({link}) | `الفيديو`\n"
+                        f"⋆ **⋆ مدة الاغنيه:** `{duration}`\n"
+                        f"⋆ **⋆ طالب الاغنيه هو:** {requester}",
             )
             remove_if_exists(image)
         else:
             try:
-                await loser.edit("❤️‍🔥 يَتمَ اެݪتشغِيݪ اެلانِ...")
+                await loser.edit("⋆ يتم التشغيل الان •.")
                 gcname = m.chat.title
                 ctitle = await CHAT_TITLE(gcname)
                 title = songname
@@ -188,20 +188,20 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
                 await m.reply_photo(
                     photo=image,
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"-› **اެݪاسم:** [{songname}]({link}) | `فيديو`\n"
-                            f"-› **اެݪمدةه:** `{duration}`\n"
-                            f"-› **طݪب اެݪحݪۅ:** {requester}",
+                    caption=f"⋆ **⋆ اسم الاغنيه:** [{songname}]({link}) | `فيديو`\n"
+                            f"⋆ **⋆ مدة الاغنيه:** `{duration}`\n"
+                            f"⋆ **⋆ طالب الاغنيه هو:** {requester}",
                 )
                 remove_if_exists(image)
             except (NoActiveGroupCall, GroupCallNotFound):
                 await loser.delete()
                 await remove_active_chat(chat_id)
-                await m.reply_text("🦴 ماكو مكالمة شلون اشغل يلا اكتب.\n\n» هاي .اصعد وحاول مره اخرى !")
+                await m.reply_text("⋆  ماكو مكالمة شلون اشغل يلا اكتب.\n\n» هاي .اصعد وحاول مره اخرى !")
             except Exception as e:
                 LOGS.info(f"[ERROR]: {e}")
     else:
         await m.reply_text(
-            "-› الرد على مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت ."
+            "⋆  الرد علي مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت.. •"
         )
 
 
@@ -253,7 +253,7 @@ async def video_stream(c: Client, m: Message):
         except Exception as e:
             LOGS.info(f"[ERROR]: {e}")
             return await m.reply_text(
-                f"🦴 **فشل المساعد في الانضمام**\n\n**السبب**: `{e}`"
+                f"⋆  **فشل المساعد في الانضمام**\n\n**السبب**: `{e}`"
             )
     if replied:
         if replied.video or replied.document:
@@ -261,16 +261,16 @@ async def video_stream(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "-› الرد على مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت ."
+                    "⋆  الرد علي مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت.. •"
                 )
             else:
                 Q = 720
-                loser = await c.send_message(chat_id, "❤️‍🔥 جَاެࢪي اެݪبَحثَ...")
+                loser = await c.send_message(chat_id, "⋆  جاري البحث.. •.")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 amaze = HighQualityVideo()
                 if search == 0:
-                    await loser.edit("لم يتم العثور على نتائج جرب اعطاء اسم الاغنية الكامل 🦴")
+                    await loser.edit("لم يتم العثور على نتائج جرب اعطاء اسم الاغنية الكامل⋆ ")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -286,7 +286,7 @@ async def video_stream(c: Client, m: Message):
                         await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
                     else:
                         if chat_id in QUEUE:
-                            await loser.edit("❤️‍🔥 تَتم اެݪاضافَة...")
+                            await loser.edit("⋆ جاري الاضافة •.")
                             pos = add_to_queue(chat_id, songname, ytlink, url, "video", Q)
                             await loser.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
@@ -294,12 +294,12 @@ async def video_stream(c: Client, m: Message):
                             await m.reply_photo(
                                 photo=image,
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"-› **اެبشࢪ عيني ضفتها للانتضار -› ** `{pos}`\n\n-› **اެݪاسم:** [{songname}]({url}) | `الفيديو`\n-›  **اެݪمدةه:** `{duration}`\n-› **طݪب اެݪحݪۅ:** {requester}",
+                                caption=f"⋆ **اެبشࢪ عيني ضفتها للانتضار ⋆ ** `{pos}`\n\n⋆ **⋆ اسم الاغنيه:** [{songname}]({url}) | `الفيديو`\n⋆  **⋆ مدة الاغنيه:** `{duration}`\n⋆ **⋆ طالب الاغنيه هو:** {requester}",
                             )
                             remove_if_exists(image)
                         else:
                             try:
-                                await loser.edit("❤️‍🔥 يَتمَ اެݪتشغِيݪ اެلانِ...")
+                                await loser.edit("⋆ يتم التشغيل الان •.")
                                 await music_on(chat_id)
                                 await add_active_chat(chat_id)
                                 await calls.join_group_call(
@@ -318,25 +318,25 @@ async def video_stream(c: Client, m: Message):
                                 await m.reply_photo(
                                     photo=image,
                                     reply_markup=InlineKeyboardMarkup(buttons),
-                                    caption=f"-› **اެݪاسم:** [{songname}]({url}) | `الفيديو`\n-› **اެݪمدةه:** `{duration}`\n-› **طݪب اެݪحݪۅ:** {requester}",
+                                    caption=f"⋆ **⋆ اسم الاغنيه:** [{songname}]({url}) | `الفيديو`\n⋆ **⋆ مدة الاغنيه:** `{duration}`\n⋆ **⋆ طالب الاغنيه هو:** {requester}",
                                 )
                                 remove_if_exists(image)
                             except (NoActiveGroupCall, GroupCallNotFound):
                                 await loser.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("🦴 ماكو مكالمة شلون اشغل يلا اكتب.\n\n» هاي .اصعد وحاول مره اخرى !")
+                                await m.reply_text("⋆  ماكو مكالمة شلون اشغل يلا اكتب.\n\n» هاي .اصعد وحاول مره اخرى !")
                             except NoVideoSourceFound:
                                 await loser.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("🦴 هذا المحتوى لايحتوي على صوت")
+                                await m.reply_text("⋆  هذا المحتوى لايحتوي على صوت")
                             except NoAudioSourceFound:
                                 await loser.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("🦴 هذا المحتوى لايحتوي على صوت")
+                                await m.reply_text("⋆  هذا المحتوى لايحتوي على صوت")
 
     else:
         if len(m.command) < 2:
-            await m.reply_text("-› الرد على مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت .")
+            await m.reply_text("⋆  الرد علي مقطع فيديو او اكتب .الاوامر لمعرفة استخدام البوت.. •")
         elif "t.me" in m.command[1]:
             for i in m.command[1:]:
                 if "t.me" in i:
@@ -344,12 +344,12 @@ async def video_stream(c: Client, m: Message):
                 continue
         else:
             Q = 720
-            loser = await c.send_message(chat_id, "❤️‍🔥 جَاެࢪي اެݪبَحثَ...")
+            loser = await c.send_message(chat_id, "⋆  جاري البحث.. •.")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             amaze = HighQualityVideo()
             if search == 0:
-                await loser.edit("لم يتم العثور على نتائج جرب اعطاء اسم الاغنية الكامل 🦴")
+                await loser.edit("لم يتم العثور على نتائج جرب اعطاء اسم الاغنية الكامل⋆ ")
             else:
                 songname = search[0]
                 title = search[0]
@@ -365,7 +365,7 @@ async def video_stream(c: Client, m: Message):
                     await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
                 else:
                     if chat_id in QUEUE:
-                        await loser.edit("❤️‍🔥 تَتم اެݪاضافَة...")
+                        await loser.edit("⋆ جاري الاضافة •.")
                         pos = add_to_queue(chat_id, songname, ytlink, url, "video", Q)
                         await loser.delete()
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
@@ -373,12 +373,12 @@ async def video_stream(c: Client, m: Message):
                         await m.reply_photo(
                             photo=image,
                             reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"-› **اެبشࢪ عيني ضفتها ݪݪانتضاࢪ -› ** `{pos}`\n\n-› **اެݪاسم:** [{songname}]({url}) | `الفيديو`\n-› **اެݪمدةه:** `{duration}`\n-› **طݪب اެݪحݪۅ:** {requester}",
+                            caption=f"⋆ **⋆ تم اضافة الاغنيه للانتظار ⋆ ** `{pos}`\n\n⋆ **⋆ اسم الاغنيه:** [{songname}]({url}) | `الفيديو`\n⋆ **⋆ مدة الاغنيه:** `{duration}`\n⋆ **⋆ طالب الاغنيه هو:** {requester}",
                         )
                         remove_if_exists(image)
                     else:
                         try:
-                            await loser.edit("❤️‍🔥 يَتمَ اެݪتشغِيݪ اެلانِ...")
+                            await loser.edit("⋆ يتم التشغيل الان •.")
                             await music_on(chat_id)
                             await add_active_chat(chat_id)
                             await calls.join_group_call(
@@ -397,18 +397,18 @@ async def video_stream(c: Client, m: Message):
                             await m.reply_photo(
                                 photo=image,
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"-› **اެݪاسم:** [{songname}]({url}) | `الفيديو`\n-› **اެݪمدةه:** `{duration}`\n-› **طݪب اެݪحݪۅ:** {requester}",
+                                caption=f"⋆ **⋆ اسم الاغنيه:** [{songname}]({url}) | `الفيديو`\n⋆ **⋆ مدة الاغنيه:** `{duration}`\n⋆ **⋆ طالب الاغنيه هو:** {requester}",
                             )
                             remove_if_exists(image)
                         except (NoActiveGroupCall, GroupCallNotFound):
                             await loser.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("🦴 ماكو مكالمة شلون اشغل يلا اكتب.\n\n» هاي .اصعد وحاول مره اخرى !")
+                            await m.reply_text("⋆  ماكو مكالمة شلون اشغل يلا اكتب.\n\n» هاي .اصعد وحاول مره اخرى !")
                         except NoVideoSourceFound:
                             await loser.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("🦴 هذا المحتوى لايحتوي على صوت")
+                            await m.reply_text("⋆  هذا المحتوى لايحتوي على صوت")
                         except NoAudioSourceFound:
                             await loser.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("🦴 هذا المحتوى لايحتوي على صوت")
+                            await m.reply_text("⋆  هذا المحتوى لايحتوي على صوت")
